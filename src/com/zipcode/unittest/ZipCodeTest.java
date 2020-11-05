@@ -1,0 +1,65 @@
+/**
+ * 
+ */
+package com.zipcode.unittest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.zipcode.entitty.ZipCode;
+
+/**
+ * @author Bhavik Gandhi
+ *
+ */
+class ZipCodeTest {
+
+	/**
+	 * Test method for {@link com.zipcode.entitty.ZipCode#getValue()}.
+	 */
+	@Test
+	void testGetValue() {
+		ZipCode zipcode = new ZipCode("10000",10000);
+		assertEquals(10000,zipcode.getValue());
+	}
+
+	/**
+	 * Test method for {@link com.zipcode.entitty.ZipCode#setValue(java.lang.Integer)}.
+	 */
+	@Test
+	void testSetValue() {
+		ZipCode zipcode = new ZipCode("10000",10000);
+		zipcode.setValue(20000);
+		assertEquals(20000,zipcode.getValue());
+	}
+
+	/**
+	 * Test method for {@link com.zipcode.entitty.ZipCode#getStringValue()}.
+	 */
+	@Test
+	void testGetStringValue() {
+		ZipCode zipcode = new ZipCode("10000",10000);
+		assertEquals("10000",zipcode.getStringValue());
+	}
+
+	/**
+	 * Test method for {@link com.zipcode.entitty.ZipCode#setStringValue(java.lang.String)}.
+	 */
+	@Test
+	void testSetStringValue() {
+		ZipCode zipcode = new ZipCode("10000",10000);
+		zipcode.setStringValue("20000");
+		assertEquals("20000",zipcode.getStringValue());
+	}
+
+	/**
+	 * Test method for {@link com.zipcode.entitty.ZipCode#toString()}.
+	 */
+	@Test
+	void testToString() {
+		ZipCode zipcode = new ZipCode("10000",10000);
+		assertNotNull(zipcode.toString());
+	}
+
+}
