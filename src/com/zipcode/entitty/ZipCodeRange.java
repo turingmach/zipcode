@@ -2,13 +2,25 @@ package com.zipcode.entitty;
 
 /**
  * @author Bhavik Gandhi
- *
+ * 
+ * Stores uppper and lower Zip Code limits to define a Zip Code range
  */
 public class ZipCodeRange {
 
+	/**
+	 * Stores the lower limit of Zip Code Range
+	 */
 	private ZipCode lowerZipCode;
+	/**
+	 * Stores the upper limit of Zip Code Range
+	 */
 	private ZipCode upperZipCode;
 	
+	/**
+	 * Initializes Zip Code Range object with lower and upper limit. 
+	 * @param lowerZipCode
+	 * @param upperZipCode
+	 */
 	public ZipCodeRange(ZipCode lowerZipCode, ZipCode upperZipCode) {
 		super();
 		if (lowerZipCode.getValue() < upperZipCode.getValue()) {
@@ -22,6 +34,7 @@ public class ZipCodeRange {
 	}
 
 	/**
+	 * Getter method for lower limit of Zip Code Range
 	 * @return ZipCode
 	 */
 	public ZipCode getLowerZipCode() {
@@ -29,6 +42,7 @@ public class ZipCodeRange {
 	}
 
 	/**
+	 * Setter method for lower limit of Zip Code Range
 	 * @param lowerZipCode
 	 */
 	public void setLowerZipCode(ZipCode lowerZipCode) {
@@ -36,6 +50,7 @@ public class ZipCodeRange {
 	}
 
 	/**
+	 * Getter method for upper limit of Zip Code Range
 	 * @return ZipCode
 	 */
 	public ZipCode getUpperZipCode() {
@@ -43,6 +58,7 @@ public class ZipCodeRange {
 	}
 
 	/**
+	 * Setter method for upper limit of Zip Code Range
 	 * @param upperZipCode
 	 */
 	public void setUpperZipCode(ZipCode upperZipCode) {
@@ -50,6 +66,7 @@ public class ZipCodeRange {
 	}
 
 	/**
+	 * Implements toString method to print Zip Code Range object
 	 * @return String
 	 */
 	@Override

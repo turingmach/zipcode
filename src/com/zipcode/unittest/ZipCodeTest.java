@@ -11,7 +11,8 @@ import com.zipcode.entitty.ZipCode;
 
 /**
  * @author Bhavik Gandhi
- *
+ * 
+ * Unit test for Zip Code class
  */
 class ZipCodeTest {
 
@@ -20,7 +21,7 @@ class ZipCodeTest {
 	 */
 	@Test
 	void testGetValue() {
-		ZipCode zipcode = new ZipCode("10000",10000);
+		ZipCode zipcode = new ZipCode(10000);
 		assertEquals(10000,zipcode.getValue());
 	}
 
@@ -29,28 +30,9 @@ class ZipCodeTest {
 	 */
 	@Test
 	void testSetValue() {
-		ZipCode zipcode = new ZipCode("10000",10000);
+		ZipCode zipcode = new ZipCode(10000);
 		zipcode.setValue(20000);
 		assertEquals(20000,zipcode.getValue());
-	}
-
-	/**
-	 * Test method for {@link com.zipcode.entitty.ZipCode#getStringValue()}.
-	 */
-	@Test
-	void testGetStringValue() {
-		ZipCode zipcode = new ZipCode("10000",10000);
-		assertEquals("10000",zipcode.getStringValue());
-	}
-
-	/**
-	 * Test method for {@link com.zipcode.entitty.ZipCode#setStringValue(java.lang.String)}.
-	 */
-	@Test
-	void testSetStringValue() {
-		ZipCode zipcode = new ZipCode("10000",10000);
-		zipcode.setStringValue("20000");
-		assertEquals("20000",zipcode.getStringValue());
 	}
 
 	/**
@@ -58,7 +40,7 @@ class ZipCodeTest {
 	 */
 	@Test
 	void testToString() {
-		ZipCode zipcode = new ZipCode("10000",10000);
+		ZipCode zipcode = new ZipCode(10000);
 		assertNotNull(zipcode.toString());
 	}
 

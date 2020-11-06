@@ -9,11 +9,34 @@ import java.util.Scanner;
 
 import com.zipcode.entitty.ZipCode;
 import com.zipcode.entitty.ZipCodeRange;
+import com.zipcode.utility.ZipCodeUtility;
 
+/**
+ * @author Bhavik Gandhi
+ * 
+ * Reader class to read Zip Code data inputs from text files
+ */
 public class ZipCodeInputReader {
 	
-	Scanner myReader;
 	
+	/**
+	 * Text Resource Folder
+	 */
+	private static final String TEXT_RESOURCES_FOLDER = "TextResources";
+	
+	/**
+	 * Invalid Zip Code Range Input Text File
+	 */
+	private static final String INVALID_ZIP_CODE_RANGE_TXT_FILENAME = TEXT_RESOURCES_FOLDER +"/ZipCodeRange.txt";
+	
+	/**
+	 * Zip Code Check List File
+	 */
+	private static final String ZIP_CODE_CHECK_LIST_TXT_FILENAME = TEXT_RESOURCES_FOLDER +"/ZipCodeCheckList.txt";
+	/**
+	 * Scanner object to read data from input files
+	 */
+	Scanner myReader;
 	
 	/** Reads List Zip Code Ranges from an External Text File with a Zip Code Range per line 
 	 * and with an lower and upper limit separated by space, comma or tab.
@@ -22,27 +45,24 @@ public class ZipCodeInputReader {
 	public List<ZipCodeRange> readZipCodeRangeList() {
 		List<ZipCodeRange> zipCodeRangeList = new ArrayList<ZipCodeRange>();
 		try {
-	      File myObj = new File("TextResources/ZipCodeRange.txt");
+	      File myObj = new File(INVALID_ZIP_CODE_RANGE_TXT_FILENAME);
 	      myReader = new Scanner(myObj);
 	      while (myReader.hasNextLine()) {
 	        String data = myReader.nextLine();
 	    	String[] zipCodeArray = new String[2];
 	    	zipCodeArray = data.split("[\s\t,]");
 	    	
-	        if (zipCodeArray[0] != null && zipCodeArray[1] != null) {
-	        	zipCodeArray[0] = zipCodeArray[0].trim();
-	        	if (zipCodeArray[0].length() == 5 && zipCodeArray[1].length() == 5) {
-	    	    	ZipCode zipcode1 = new ZipCode(zipCodeArray[0], Integer.parseInt(zipCodeArray[0]));
-					ZipCode zipCode2 = new ZipCode(zipCodeArray[1], Integer.parseInt(zipCodeArray[1]));
-					ZipCodeRange zipCodeRange = new ZipCodeRange(zipcode1, zipCode2);
-					zipCodeRangeList.add(zipCodeRange);
-	        	} else {
-	        		throw new Exception("Incorrect Zipcodes");
-	        	}
-	        }
+	        if (ZipCodeUtility.isValidZipCode(zipCodeArray[0]) && ZipCodeUtility.isValidZipCode(zipCodeArray[1])) {
+    	    	ZipCode zipcode1 = new ZipCode(Integer.parseInt(zipCodeArray[0]));
+				ZipCode zipCode2 = new ZipCode(Integer.parseInt(zipCodeArray[1]));
+				ZipCodeRange zipCodeRange = new ZipCodeRange(zipcode1, zipCode2);
+				zipCodeRangeList.add(zipCodeRange);
+        	} else {
+        		throw new Exception("Incorrect Zipcodes");
+        	}
 	      }
 	    } catch (FileNotFoundException e) {
-	      System.out.println("An error occurred.");
+	      System.out.println("File not Found.");
 	      e.printStackTrace();
 	    } catch (Exception e) {
 		      System.out.println(e.getMessage());
@@ -61,22 +81,19 @@ public class ZipCodeInputReader {
 	public List<ZipCode> readZipCodeCheckList() {
 		List<ZipCode> zipCodeList = new ArrayList<ZipCode>();
 		try {
-	      File myObj = new File("TextResources/ZipCodeCheckList.txt");
+	      File myObj = new File(ZIP_CODE_CHECK_LIST_TXT_FILENAME);
 	      myReader = new Scanner(myObj);
 	      while (myReader.hasNextLine()) {
 	        String data = myReader.nextLine();
-	        if (data != null) {
-	        	data = data.trim();
-	        	if (data.length() == 5) {
-			    	zipCodeList.add(new ZipCode(data, Integer.parseInt(data)));
-	        	} else {
-	        		throw new Exception("Incorrect Zipcode");
-	        	}
-	        }
+        	if (ZipCodeUtility.isValidZipCode(data)) {
+		    	zipCodeList.add(new ZipCode(Integer.parseInt(data)));
+        	} else {
+        		throw new Exception("Incorrect Zipcode");
+        	}
 	      }
 	      myReader.close();
 	    } catch (FileNotFoundException e) {
-	      System.out.println("An error occurred.");
+	      System.out.println("File not Found.");
 	      e.printStackTrace();
 	    } catch (Exception e) {
 		      System.out.println(e.getMessage());

@@ -13,6 +13,7 @@ import com.zipcode.entitty.ZipCodeRange;
 /**
  * @author Bhavik Gandhi
  *
+ * Unit test for Zip Code Range class
  */
 class ZipCodeRangeTest {
 
@@ -21,8 +22,8 @@ class ZipCodeRangeTest {
 	 */
 	@Test
 	void testGetLowerZipCode() {
-		ZipCode lowerZipCode = new ZipCode("10000",10000);
-		ZipCode upperZipCode = new ZipCode("20000",20000);
+		ZipCode lowerZipCode = new ZipCode(10000);
+		ZipCode upperZipCode = new ZipCode(20000);
 		ZipCodeRange zipCodeRange = new ZipCodeRange(lowerZipCode, upperZipCode);
 		assertEquals(lowerZipCode, zipCodeRange.getLowerZipCode());
 	}
@@ -32,9 +33,9 @@ class ZipCodeRangeTest {
 	 */
 	@Test
 	void testSetLowerZipCode() {
-		ZipCode lowerZipCode = new ZipCode("10000",10000);
-		ZipCode upperZipCode = new ZipCode("20000",20000);
-		ZipCode newLowerZipCode = new ZipCode("10500",10500);
+		ZipCode lowerZipCode = new ZipCode(10000);
+		ZipCode upperZipCode = new ZipCode(20000);
+		ZipCode newLowerZipCode = new ZipCode(10500);
 		ZipCodeRange zipCodeRange = new ZipCodeRange(lowerZipCode, upperZipCode);
 		zipCodeRange.setLowerZipCode(newLowerZipCode);
 		assertEquals(newLowerZipCode, zipCodeRange.getLowerZipCode());
@@ -45,8 +46,8 @@ class ZipCodeRangeTest {
 	 */
 	@Test
 	void testGetUpperZipCode() {
-		ZipCode lowerZipCode = new ZipCode("10000",10000);
-		ZipCode upperZipCode = new ZipCode("20000",20000);
+		ZipCode lowerZipCode = new ZipCode(10000);
+		ZipCode upperZipCode = new ZipCode(20000);
 		ZipCodeRange zipCodeRange = new ZipCodeRange(lowerZipCode, upperZipCode);
 		assertEquals(upperZipCode, zipCodeRange.getUpperZipCode());
 	}
@@ -56,9 +57,9 @@ class ZipCodeRangeTest {
 	 */
 	@Test
 	void testSetUpperZipCode() {
-		ZipCode lowerZipCode = new ZipCode("10000",10000);
-		ZipCode upperZipCode = new ZipCode("20000",20000);
-		ZipCode newUpperZipCode = new ZipCode("20500",20500);
+		ZipCode lowerZipCode = new ZipCode(10000);
+		ZipCode upperZipCode = new ZipCode(20000);
+		ZipCode newUpperZipCode = new ZipCode(20500);
 		ZipCodeRange zipCodeRange = new ZipCodeRange(lowerZipCode, upperZipCode);
 		zipCodeRange.setLowerZipCode(newUpperZipCode);
 		assertEquals(newUpperZipCode, zipCodeRange.getUpperZipCode());
@@ -69,8 +70,8 @@ class ZipCodeRangeTest {
 	 */
 	@Test
 	void testToString() {
-		ZipCode lowerZipCode = new ZipCode("10000",10000);
-		ZipCode upperZipCode = new ZipCode("20000",20000);
+		ZipCode lowerZipCode = new ZipCode(10000);
+		ZipCode upperZipCode = new ZipCode(20000);
 		ZipCodeRange zipCodeRange = new ZipCodeRange(lowerZipCode, upperZipCode);
 		assertNotNull(zipCodeRange.toString());
 	}
