@@ -20,6 +20,16 @@ public class ZipCodeInputReader {
 	
 	
 	/**
+	 * File not Found String Constant
+	 */
+	private static final String FILE_NOT_FOUND_MSG = "File not Found.";
+
+	/**
+	 * Incorrect Zip Code Exception Constant
+	 */
+	private static final String INCORRECT_ZIPCODE_EXCEPTION = "Incorrect Zipcode";
+
+	/**
 	 * Text Resource Folder
 	 */
 	private static final String TEXT_RESOURCES_FOLDER = "TextResources";
@@ -58,11 +68,11 @@ public class ZipCodeInputReader {
 				ZipCodeRange zipCodeRange = new ZipCodeRange(zipcode1, zipCode2);
 				zipCodeRangeList.add(zipCodeRange);
         	} else {
-        		throw new Exception("Incorrect Zipcodes");
+        		throw new Exception(INCORRECT_ZIPCODE_EXCEPTION);
         	}
 	      }
 	    } catch (FileNotFoundException e) {
-	      System.out.println("File not Found.");
+	      System.out.println(FILE_NOT_FOUND_MSG);
 	      e.printStackTrace();
 	    } catch (Exception e) {
 		      System.out.println(e.getMessage());
@@ -88,12 +98,12 @@ public class ZipCodeInputReader {
         	if (ZipCodeUtility.isValidZipCode(data)) {
 		    	zipCodeList.add(new ZipCode(Integer.parseInt(data)));
         	} else {
-        		throw new Exception("Incorrect Zipcode");
+        		throw new Exception(INCORRECT_ZIPCODE_EXCEPTION);
         	}
 	      }
 	      myReader.close();
 	    } catch (FileNotFoundException e) {
-	      System.out.println("File not Found.");
+	      System.out.println(FILE_NOT_FOUND_MSG);
 	      e.printStackTrace();
 	    } catch (Exception e) {
 		      System.out.println(e.getMessage());
